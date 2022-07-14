@@ -10,12 +10,23 @@ public class BubbleSort {
         a[idx2] = t;
     }
 
-    static void bubbleSort(int[] a, int n){
-        for(int i = 0; i < n -1; i++)
-            for(int j = n -1; j > i; j--)
-                if(a[j - 1] > a[j])
-                    swap(a,j - 1, j);
+    static void selectionSort(int[] a, int n){
+        for(int i = 0; i < n - 1; i++){
+            int min = i;
+            for(int j = i + 1; j < n; j++){
+                if(a[j] < a[min])
+                    min = j;
+                swap(a, i, min);
+            }
+        }
     }
+
+//    static void bubbleSort(int[] a, int n){
+//        for(int i = 0; i < n -1; i++)
+//            for(int j = n -1; j > i; j--)
+//                if(a[j - 1] > a[j])
+//                    swap(a,j - 1, j);
+//    }
 
     public static void main(String[] args) {
         Scanner stdIn = new Scanner(System.in);
@@ -30,7 +41,9 @@ public class BubbleSort {
             x[i] = stdIn.nextInt();
         }
 
-        bubbleSort(x,nx);
+        //bubbleSort(x,nx);
+
+        selectionSort(x, nx);
 
         System.out.println("오름차순으로 정렬했습니다.");
         for(int i = 0; i < nx; i++){
